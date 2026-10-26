@@ -89,8 +89,6 @@ These works informed the approach to preserving capabilities, composing workflow
 - [**SkillComposer: Learning to Evolve Agent Skills for Specification and Generalization**](https://arxiv.org/abs/2606.06079) — Qi Zhang et al., 2026. Creating, merging, and improving skills using task feedback.
 - [**One Skill Takes Over: Clashing Agent Skills and a One-File Fix**](https://arxiv.org/abs/2610.25064) — Parsa Razmara, Seyedarmin Azizi, and Ardalan Aryashad, 2026. SkillClash, interference between combined skills, and the importance of correct joint examples.
 
-The authoring workflow also draws on [gaia-research/skill-fuse](https://github.com/gaia-research/skill-fuse). The README structure was inspired by [mattpocock/skills](https://github.com/mattpocock/skills).
-
 <details>
 <summary><strong>Development and tests</strong></summary>
 
