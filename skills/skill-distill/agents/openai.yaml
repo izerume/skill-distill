@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Distill"
+  short_description: "Select worthwhile skill distillation targets and verify behavior"
+  default_prompt: "Use $skill-distill to select worthwhile targets or distill the named skills, preserve source behavior, and verify the result on representative tasks."

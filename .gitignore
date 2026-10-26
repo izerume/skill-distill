@@ -1,0 +1,6 @@
+.work/
+__pycache__/
+*.pyc
+dist/
+/research/sources/skillclash/
+.skill-distill/
