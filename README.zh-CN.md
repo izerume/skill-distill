@@ -91,7 +91,6 @@ $skill-distill 把 writing-workbench 恢复到 r000001。
 - [**SkillComposer: Learning to Evolve Agent Skills for Specification and Generalization**](https://arxiv.org/abs/2606.06079) — Qi Zhang 等，2026。参考其通过任务反馈创建、合并和改进技能的方法。
 - [**One Skill Takes Over: Clashing Agent Skills and a One-File Fix**](https://arxiv.org/abs/2610.25064) — Parsa Razmara、Seyedarmin Azizi、Ardalan Aryashad，2026。参考其 SkillClash 任务、技能组合干扰分析，以及对正确联合示例的验证。
 
-技能编写流程也参考了 [gaia-research/skill-fuse](https://github.com/gaia-research/skill-fuse)。README 的组织方式参考了 [mattpocock/skills](https://github.com/mattpocock/skills)。
 
 <details>
 <summary><strong>开发与测试</strong></summary>
