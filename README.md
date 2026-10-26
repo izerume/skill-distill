@@ -2,6 +2,8 @@
 
 # Skill Distill
 
+**技能入口：[SKILL.md](skills/skill-distill/SKILL.md)**
+
 将相关 Agent Skills 蒸馏为更易复用的技能，同时记录来源、检查原有能力，并维护项目内的产物版本。
 
 交付物是一份 [Agent SKILL](skills/skill-distill/SKILL.md)：agent 按其中的方法分类、选材、构建和验证；内部 Python 脚本辅助处理指纹、快照、记录及恢复。脚本本身不调用模型。
@@ -16,15 +18,15 @@
 
 ## 安装和调用
 
-在要使用技能的项目目录中，从本地仓库安装：
+在要使用技能的项目目录中运行：
 
 ```text
-npx skills add /path/to/skill-distill-repo --skill skill-distill
+npx skills add izerume/skill-distill --skill skill-distill
 ```
 
-上传 GitHub 后，也可以把本地路径换成实际的 `owner/repo`。上述调用使用项目范围，不带全局安装参数。
+上述调用使用项目范围，不带全局安装参数。安装后通过 `$skill-distill` 调用。
 
-也可以让 agent 直接读取本仓库的 `skills/skill-distill/SKILL.md`。常见请求：
+也可以让 agent 直接读取本仓库的 [SKILL.md](skills/skill-distill/SKILL.md)。常见请求：
 
 ```text
 用 $skill-distill 看看我的技能库。先按名称和描述分类，
