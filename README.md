@@ -1,88 +1,84 @@
+**English** | [简体中文](README.zh-CN.md)
+
 <img src="assets/icon.svg" width="64" height="64" alt="">
 
 # Skill Distill
 
-给 agent 用的技能蒸馏方法：整理你的技能库，把相关 SKILL 合并成更好用的技能，并用实际任务检查原有能力。
+Help your agent organize its skill library, combine related skills, and check the result on real tasks.
 
-**[阅读 SKILL.md](skills/skill-distill/SKILL.md)**
+**[Read SKILL.md](skills/skill-distill/SKILL.md)**
 
-## 安装
+## Installation
 
-在你的项目目录中运行：
+Run this in your project directory:
 
 ```bash
 npx skills add izerume/skill-distill --skill skill-distill
 ```
 
-安装后，在 agent 中调用 `skill-distill`。例如：
+Then invoke `skill-distill` in your agent. For example:
 
 ```text
-$skill-distill 先看看我的技能库，按名称和描述分类，
-挑出值得一起蒸馏的组，暂时不要深入分析。
+$skill-distill Look over my skill library. Group skills by name and description,
+then suggest groups worth distilling. Keep this to a quick first pass.
 ```
 
-源技能继续由 `npx skills` 管理。生成的技能放在你指定的项目目录里。
+Continue managing source skills with `npx skills`. Save distilled skills to the directory you choose in your project.
 
-## 它解决什么问题？
+## What does it help with?
 
-### 技能越来越多，不知道该合并哪些
+### Too many skills, and no clear place to start
 
-有些技能在重复同一套规则，有些则是一个任务的不同阶段。先把它们按用途分组，才能看清哪些适合共享方法、哪些可以合为一个入口。
+Some skills repeat the same rules. Others handle different stages of a task. Grouping them by purpose reveals which can share methods or a common entry point.
 
-Skill Distill 先看名称和描述，给出分类与候选组，再深入你选中的部分。
+Skill Distill starts with names and descriptions, suggests groups, then inspects the sources for the groups you select.
 
-### 合并了文档，却丢了原来的用法
+### Merged instructions lose the original workflow
 
-把内容拼在一起，还不足以处理不同流程之间的关系。素材采集、逐段成文、节拍推进可以共用写作原则，同时保留各自的操作模式。
+Related workflows can share principles while keeping their own interaction patterns. Collecting fragments, shaping an article, and choosing writing beats are a useful example.
 
-Skill Distill 会记录源能力、整理共同部分、保留必要分支，再用少量真实任务检查结果。你可以直接指定要合并的技能：
+Skill Distill records source capabilities, consolidates shared material, preserves the necessary branches, and checks the result on a small set of real tasks. You can name the skills to merge:
 
 ```text
-$skill-distill 合并这几份写作技能，保留各自的工作方式。
-新技能放到当前项目的 distilled/writing-workbench，
-快速比较一下原版和融合版，没发现问题就停。
+$skill-distill Merge these writing skills while preserving their workflows.
+Save the result to distilled/writing-workbench in this project.
+Run a quick comparison of the originals and the merged skill, then stop if no issues appear.
 ```
 
-### 源技能更新了，蒸馏版怎么办
+### Keeping distilled skills up to date
 
-Agent 可以检查来源变化，指出哪些蒸馏产物需要更新。你明确说更新后，才基于选定的源重新蒸馏、快测并切换。旧版本会保留，需要时直接恢复。
-
-```text
-$skill-distill 检查 writing-workbench 的来源有没有变化，先不要更新。
-```
+Your agent can check for source changes and identify affected outputs. An explicit update request starts a rebuild from the selected sources, followed by smoke checks and a switch to the new version. Saved packages remain available for restoration.
 
 ```text
-$skill-distill 更新 writing-workbench，使用本机已安装的源，
-快测通过后切换。如果有我的本地修改，先保留。
+$skill-distill Check whether writing-workbench's sources have changed. Do not update it yet.
 ```
 
 ```text
-$skill-distill 把 writing-workbench 恢复到 r000001。
+$skill-distill Update writing-workbench from the currently installed sources.
+Switch after smoke checks pass. Preserve any local edits I have made.
 ```
 
-## 技能目录
+```text
+$skill-distill Restore writing-workbench to r000001.
+```
 
-| Skill | 用途 |
-| --- | --- |
-| [skill-distill · SKILL.md](skills/skill-distill/SKILL.md) | 分类技能库、蒸馏相关技能、检查效果，以及维护蒸馏版本。 |
+## Further reading
 
-想了解具体方法，可以从这些文档进入：
-
-- **选材：**[分类](skills/skill-distill/references/classification.md) · [目标选择](skills/skill-distill/references/target-selection.md)
-- **蒸馏与验证：**[行为契约](skills/skill-distill/references/contracts.md) · [评测方法](skills/skill-distill/references/evaluation.md)
-- **后续维护：**[更新与恢复](skills/skill-distill/references/versioning.md)
+- **Choosing inputs:** [Classification](skills/skill-distill/references/classification.md) · [Target selection](skills/skill-distill/references/target-selection.md)
+- **Building and checking:** [Behavior contracts](skills/skill-distill/references/contracts.md) · [Evaluation](skills/skill-distill/references/evaluation.md)
+- **Maintenance:** [Updates and restoration](skills/skill-distill/references/versioning.md)
 
 <details>
-<summary><strong>开发与测试</strong></summary>
+<summary><strong>Development and tests</strong></summary>
 
-需要 Python 3.10 或以上。内部 Python 脚本只使用标准库，辅助计算指纹、保存快照和执行版本操作；语义判断与生成由 agent 完成。
+Python 3.10 or later is required. The internal scripts use the standard library to handle fingerprints, snapshots, and version operations. The agent handles semantic decisions and generation.
 
-在仓库根目录运行：
+Run from the repository root:
 
 ```bash
 python -X utf8 -B tests/run_tests.py
 ```
 
-测试覆盖选材、只读检查、历史输入、证据绑定、版本切换和中断恢复，不调用模型。GitHub Actions 配置在 Windows 和 Linux 上执行同一组测试。
+Tests cover target selection, read-only inspection, historical inputs, evidence binding, version switching, and recovery after process exits. They do not call a model. GitHub Actions runs the same suite on Windows and Linux.
 
 </details>
