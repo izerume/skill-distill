@@ -4,7 +4,7 @@
   <img src="assets/banner-light.png" alt="Skill Distill" width="1600">
 </picture>
 
-[English](README.md) | **简体中文** · [![X：@1zrum](https://img.shields.io/badge/%401zrum-000000?style=flat&logo=x&logoColor=white)](https://x.com/1zrum)
+[English](README.md) | **简体中文** · [![X：@1zrum](assets/x-badge.svg)](https://x.com/1zrum)
 
 # Skill Distill
 
