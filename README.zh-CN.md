@@ -4,7 +4,7 @@
   <img src="assets/banner-light.png" alt="Skill Distill" width="1600">
 </picture>
 
-[English](README.md) | **简体中文**
+[English](README.md) | **简体中文** · [X：@1zrum](https://x.com/1zrum)
 
 # Skill Distill
 
