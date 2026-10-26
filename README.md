@@ -6,6 +6,10 @@
 
 Help your agent organize its skill library, combine related skills, and check the result on real tasks.
 
+New skills appear in your feeds every day. You install one after another—but how many have you forgotten about right after installing them? And how often have you handed your agent a dozen skills at once?
+
+Skill Distill is working to solve these problems. It can reduce the number and size of redundant skills without losing their capabilities—and can even improve results in some scenarios.
+
 **[Read SKILL.md](skills/skill-distill/SKILL.md)**
 
 ## Installation

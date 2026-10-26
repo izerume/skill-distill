@@ -6,6 +6,10 @@
 
 给 agent 用的技能蒸馏方法：整理你的技能库，把相关 SKILL 合并成更好用的技能，并用实际任务检查原有能力。
 
+信息媒体每天都会推送 SKILL，安装了一个又一个，但是有多少是安装后就遗忘了的，又有多少次你给 agent 发送了十几个 SKILL？
+
+Skill Distill 正试图解决这些问题。它能够在不损失 SKILL 能力、甚至部分场景有所提升的情况下，减少冗余的 SKILL 数量，并压缩体积。
+
 **[阅读 SKILL.md](skills/skill-distill/SKILL.md)**
 
 ## 安装
