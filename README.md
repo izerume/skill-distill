@@ -27,7 +27,7 @@ $skill-distill Look over my skill library. Group skills by name and description,
 then suggest groups worth distilling. Keep this to a quick first pass.
 ```
 
-Continue managing source skills with `npx skills`. Save distilled skills to the directory you choose in your project.
+Continue managing source skills with [npx skills](https://github.com/vercel-labs/skills). Save distilled skills to the directory you choose in your project.
 
 ## What does it help with?
 
@@ -71,6 +71,16 @@ $skill-distill Restore writing-workbench to r000001.
 - **Choosing inputs:** [Classification](skills/skill-distill/references/classification.md) · [Target selection](skills/skill-distill/references/target-selection.md)
 - **Building and checking:** [Behavior contracts](skills/skill-distill/references/contracts.md) · [Evaluation](skills/skill-distill/references/evaluation.md)
 - **Maintenance:** [Updates and restoration](skills/skill-distill/references/versioning.md)
+
+## References and acknowledgements
+
+These works informed the approach to preserving capabilities, composing workflows, and checking candidates on actual tasks:
+
+- [**SkillFusion: Towards Reliable Multi-Skill Composition for LLM Agents**](https://arxiv.org/abs/2610.15481) — Enhao Huang et al., 2026. Constraints with provenance, explicit conflict handling, and instruction deduplication.
+- [**SkillComposer: Learning to Evolve Agent Skills for Specification and Generalization**](https://arxiv.org/abs/2606.06079) — Qi Zhang et al., 2026. Creating, merging, and improving skills using task feedback.
+- [**One Skill Takes Over: Clashing Agent Skills and a One-File Fix**](https://arxiv.org/abs/2610.25064) — Parsa Razmara, Seyedarmin Azizi, and Ardalan Aryashad, 2026. SkillClash, interference between combined skills, and the importance of correct joint examples.
+
+The authoring workflow also draws on [gaia-research/skill-fuse](https://github.com/gaia-research/skill-fuse). The README structure was inspired by [mattpocock/skills](https://github.com/mattpocock/skills).
 
 <details>
 <summary><strong>Development and tests</strong></summary>

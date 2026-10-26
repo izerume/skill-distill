@@ -27,7 +27,7 @@ $skill-distill 先看看我的技能库，按名称和描述分类，
 挑出值得一起蒸馏的组，暂时不要深入分析。
 ```
 
-源技能继续由 `npx skills` 管理。生成的技能放在你指定的项目目录里。
+源技能继续由 [npx skills](https://github.com/vercel-labs/skills) 管理。生成的技能放在你指定的项目目录里。
 
 ## 它解决什么问题？
 
@@ -73,6 +73,16 @@ $skill-distill 把 writing-workbench 恢复到 r000001。
 - **选材：**[分类](skills/skill-distill/references/classification.md) · [目标选择](skills/skill-distill/references/target-selection.md)
 - **蒸馏与验证：**[行为契约](skills/skill-distill/references/contracts.md) · [评测方法](skills/skill-distill/references/evaluation.md)
 - **后续维护：**[更新与恢复](skills/skill-distill/references/versioning.md)
+
+## 参考文献与致谢
+
+以下研究为能力保留、工作流组合和实际任务验证提供了方法参考：
+
+- [**SkillFusion: Towards Reliable Multi-Skill Composition for LLM Agents**](https://arxiv.org/abs/2610.15481) — Enhao Huang 等，2026。参考其带来源的约束表达、显式冲突处理与指令去重。
+- [**SkillComposer: Learning to Evolve Agent Skills for Specification and Generalization**](https://arxiv.org/abs/2606.06079) — Qi Zhang 等，2026。参考其通过任务反馈创建、合并和改进技能的方法。
+- [**One Skill Takes Over: Clashing Agent Skills and a One-File Fix**](https://arxiv.org/abs/2610.25064) — Parsa Razmara、Seyedarmin Azizi、Ardalan Aryashad，2026。参考其 SkillClash 任务、技能组合干扰分析，以及对正确联合示例的验证。
+
+技能编写流程也参考了 [gaia-research/skill-fuse](https://github.com/gaia-research/skill-fuse)。README 的组织方式参考了 [mattpocock/skills](https://github.com/mattpocock/skills)。
 
 <details>
 <summary><strong>开发与测试</strong></summary>
