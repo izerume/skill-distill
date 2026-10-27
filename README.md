@@ -19,6 +19,8 @@ Skill Distill helps your agent find related skills, bring their useful instructi
 
 When several skills cover the same territory, choosing which ones to use—and how to combine them—can become a task of its own. Skill Distill gives your agent a structured way to work through that problem, from a quick library overview to a tested, maintainable skill package.
 
+**In the cases tested so far, distilled skills showed no loss of capability and improved results in some scenarios.**
+
 **[Explore the skill](skills/skill-distill/SKILL.md)** · [How it works](#how-it-works) · [Get started](#get-started)
 
 ## What you can do
