@@ -13,41 +13,43 @@
 
 # Skill Distill
 
-**Turn a growing collection of agent skills into a more coherent toolkit.**
+**Make more of your agent skills.**
 
-Skill Distill helps your agent find related skills, bring their useful instructions and workflows together, and check the result against real tasks. It also helps you maintain the distilled skill as its sources change.
+Skill Distill helps your agent organize a growing skill library, combine related skills, and check the results on real tasks. It brings shared instructions together while preserving the workflows that make each skill useful.
 
-When several skills cover the same territory, choosing which ones to use—and how to combine them—can become a task of its own. Skill Distill gives your agent a structured way to work through that problem, from a quick library overview to a tested, maintainable skill package.
+In every case tested so far, the distilled skills retained their capabilities; in some scenarios, they performed better.
 
-**In the cases tested so far, distilled skills showed no loss of capability and improved results in some scenarios.**
+**[Explore the skill](skills/skill-distill/SKILL.md)** · [Get started](#get-started) · [How it works](#how-it-works)
 
-**[Explore the skill](skills/skill-distill/SKILL.md)** · [How it works](#how-it-works) · [Get started](#get-started)
+## Why Skill Distill?
 
-## What you can do
+As your collection grows, skills can overlap, repeat instructions, or cover different parts of the same task. Figuring out which ones belong together takes work—and simply combining their files can leave important behaviors behind.
 
-- **Map your library.** Group skills by purpose and identify promising candidates for consolidation.
-- **Distill with the workflows intact.** Bring shared instructions together while keeping distinct modes, prerequisites, and useful branches.
-- **Check the result.** Compare the sources and the candidate on representative tasks, and report what was actually tested.
-- **Keep it current.** Check for source changes, update when requested, and restore saved versions.
+Skill Distill helps you:
 
-A merge is not always the right answer: the agent can also recommend keeping skills separate, compressing one skill, or factoring out shared material. Results depend on the sources, executor, and evaluation performed; a quick smoke check is evidence about its tested cases, not a guarantee of equivalence.
+- **Find candidates.** Group skills by purpose and identify promising ones to distill.
+- **Bring workflows together.** Consolidate shared instructions while preserving distinct modes, prerequisites, and branches.
+- **Check the result.** Compare the original skills and the distilled candidate on representative tasks.
+- **Maintain the result.** Check for source changes, update on request, and restore saved versions.
+
+Depending on the skills, it may recommend a merge, a smaller single skill, shared reference material, or keeping the originals separate. Evaluation reports what was tested, so you can see how much the results cover.
 
 ## Get started
 
-Install in your project directory:
+Install from your project directory:
 
 ```bash
 npx skills add izerume/skill-distill --skill skill-distill
 ```
 
-Then ask your agent for a quick overview:
+Ask your agent to take a first look at your library:
 
 ```text
 $skill-distill Look over my skill library. Group skills by name and description,
 then suggest groups worth distilling. Keep this to a quick first pass.
 ```
 
-Already know what you want to combine? Try:
+Or name the skills you want to combine:
 
 ```text
 $skill-distill Merge these writing skills while preserving their workflows.
@@ -55,31 +57,33 @@ Save the result to distilled/writing-workbench in this project.
 Run a quick comparison of the originals and the merged skill, then stop if no issues appear.
 ```
 
-Continue managing source skills with [npx skills](https://github.com/vercel-labs/skills). Save distilled skills to the directory you choose in your project.
+Continue managing source skills with [npx skills](https://github.com/vercel-labs/skills). Save the distilled skill to a project directory of your choice.
 
 ## How it works
 
-1. **Select:** start with a lightweight classification, then inspect the selected sources and decide whether to merge, factor, compress, or keep them.
-2. **Build:** record source behavior and reconcile overlaps, differences, and conflicts into a candidate skill with the necessary branches and resources.
-3. **Evaluate:** compare source and candidate behavior on relevant tasks, including individual workflows and combined cases. Report the scope and any observed regressions.
-4. **Maintain:** track source snapshots and saved versions, then check, update, or restore as requested.
+1. **Select:** Classify the library, inspect the chosen sources, and decide how to organize them.
+2. **Build:** Record source behavior, reconcile overlaps and conflicts, and create a candidate with the necessary workflows and resources.
+3. **Evaluate:** Compare the candidate with its sources on individual and combined tasks; report the checks and any observed regressions.
+4. **Maintain:** Track source snapshots and saved versions so you can check for changes, update, or restore.
 
-The agent makes semantic decisions and generates the skill; bundled Python helpers handle fingerprints, snapshots, records, and recoverable version operations. Package size and measured runtime cost are reported separately.
+The agent handles semantic decisions and skill generation. Bundled Python helpers manage fingerprints, snapshots, records, and recoverable version operations. Package size and measured runtime cost are reported separately.
 
-## Maintain a distilled skill
+## Keep a distilled skill up to date
 
-Check for changes without updating:
+Check whether its sources have changed:
 
 ```text
 $skill-distill Check whether writing-workbench's sources have changed. Do not update it yet.
 ```
 
-Update or restore when you choose:
+When you're ready, update from the installed sources:
 
 ```text
 $skill-distill Update writing-workbench from the currently installed sources.
 Switch after smoke checks pass. Preserve any local edits I have made.
 ```
+
+You can also restore a saved version:
 
 ```text
 $skill-distill Restore writing-workbench to r000001.
