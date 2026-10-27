@@ -29,7 +29,7 @@ Keep working copies and evidence outside the installed source packages. Read sou
 
 Read [contracts.md](references/contracts.md) when starting a merge. Use the bundled script's `snapshot` command to freeze input packages and hashes. Read every source entrypoint and its relevant referenced resources; inspect executable dependencies when they affect behavior.
 
-Extract behavior contracts with source quotes, activation conditions, and required outcomes. Include rare branches: explicit modes, prerequisites, failure handling, invocation policy, and resource dependencies. Each distinct requirement needs a destination or an explicit decision. Repeated translations can share a behavior, with the equivalence recorded in the rationale.
+Extract behavior contracts with source quotes, activation conditions, and required outcomes. Include rare branches: explicit modes, prerequisites, failure handling, invocation policy, and resource dependencies. Preserve exception scopes, parameter relationships and the state to which verification applies. Each distinct requirement needs a destination or an explicit decision. Repeated translations can share a behavior, with the equivalence recorded in the rationale.
 
 Classify interactions by effect:
 
@@ -49,6 +49,8 @@ Write a coherent flow with a shared core and the necessary branches. A task requ
 
 Keep the entrypoint concise and put substantial branch-specific material behind clear conditional links. Copy retained resources into stable namespaced directories, update references, and check executable relative paths. Preserve resource licensing and attribution where present. Frontmatter and product metadata need to describe the combined capability without making unrelated tasks match.
 
+Choose compression against the user's actual objective: fewer skill entrypoints, less instruction text loaded per task, or smaller stored packages. Report these separately. Extra readers or encoding machinery need a useful benefit in that objective; moving or encoding text alone does not reduce the instructions an agent must read.
+
 Replace competing source examples with a small number of correct combined examples. Read [examples.md](references/examples.md) when constructing them. Validate every example against the source requirements it is meant to cover; its facts come from its own input. Keep task-specific answers out of the general procedure.
 
 Run `validate` using [evidence-format.md](references/evidence-format.md). Resolve structural errors and examine every explicit drop or resource adaptation. This check verifies recorded mappings and files; source extraction completeness and semantic equivalence still require review against the sources.
@@ -60,6 +62,8 @@ Read [evaluation.md](references/evaluation.md) before claiming performance prese
 Run the source baselines and candidate with the same executor and settings. Keep candidate construction separate from held-out evaluation; freeze the candidate before exposing held-out cases. Save actual outputs and check results. If fresh contexts or tool environments are unavailable, report exactly what the executed evaluation covers.
 
 Confirm that a failed check measures an applicable source requirement, then fix observed failures with targeted changes and replay affected cases plus the other source branches. Compression is a candidate edit: remove repetition, factor shared prerequisites, or disclose optional detail, then compare again. Keep useful repetition if its removal hurts execution. Select the shortest or cheapest candidate that satisfies the chosen quality gate, rather than selecting length first.
+
+Separate an observed output defect from its proposed instruction-level cause. Keep unsupported revisions unselected and respect the agreed evaluation budget; a small subjective score difference alone does not justify repeated tuning.
 
 Use `compare` to summarize paired results. Its gate is descriptive: separately inspect source strata, critical failures, individual regressions, and resource behavior. Measure token and latency savings only from executor records; bytes and characters are packaging measurements.
 

@@ -5,13 +5,17 @@ The unit of preservation is a behavior under an activation condition. Split a se
 For each source record:
 
 - The source file and a verbatim quote identifying the instruction.
-- The task, mode, phase, or environment in which it applies.
+- The task, mode, phase, environment and relevant state in which it applies.
 - The behavior and a way to observe its presence or violation.
 - Its destination in the candidate, or an explicit conflict decision.
 
 Use the smallest source and target spans that express the behavior. A pointer to an entire candidate section can pass a substring check while hiding an unrelated or weakened destination. Group repeated formulations by semantic requirement in the authoring notes; a large count of source lines is not a count of distinct preserved capabilities.
 
 Inspect the source again after extraction. Rare instructions are easy to miss when most text repeats a shared principle. Metadata may carry a requirement absent from the body. Scripts can impose input formats, state changes, or recovery rules; use their real callers and outputs to interpret them.
+
+Preserve relationships as well as individual values: which phase is faster, which step precedes another, and whether a limit is conditional. Two values can each satisfy a range while violating their required ordering. Make that relationship observable in the contract and its examples.
+
+Where a source requires fresh verification, record the state it verifies. Evidence from an earlier implementation does not establish the result after new edits. Interpret a suggestion to avoid redundant checks in that state; an explicit user prohibition on execution still controls, and the blocked verification remains unverified.
 
 ## Interaction decisions
 
@@ -21,11 +25,14 @@ Determine whether two instructions can hold under the **same conditions**. Simil
 | --- | --- |
 | A and B both require factual fidelity | One common rule; map both sources |
 | A applies to code, B to prose | Preserve separate conditional branches |
+| A build recipe permits a layout-animation exception; an audit requires only transform/opacity | Keep the exception in build mode; preserve the stricter audit rule |
 | One instruction requires a final signature; another requires a reference trailer near the end | Arrange both explicitly if the wording permits it |
 | A requires JSON and B requires prose for the same output | Apply the user's format/priority or expose a real mode choice |
 | Audit identifies findings, rewrite returns an edited artifact | Make mode selection precede editing |
 
 Record uncertainty locally. If an abstraction's equivalence is uncertain, retaining the specific clauses is a valid candidate. Favor source-supported routing over inventing a broader universal rule.
+
+A shared reference must preserve each clause's scope. Place a mode-specific exception beside its condition; do not turn it into a general default that weakens another mode. Apply only the source's actual restrictions, rather than extending the stricter mode to every task.
 
 For position, order, and shared-budget requirements, construct a joint arrangement before assigning priority. An exact second-line field can coexist with another field allowed anywhere in the top metadata region. If both require the exact same exclusive position, priority is necessary. When phrases such as "right under" are ambiguous, record the interpretation accepted by the original checker or task specification; do not silently relax the source to make a candidate pass.
 

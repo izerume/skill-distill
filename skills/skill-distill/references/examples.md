@@ -40,3 +40,17 @@ This is an audit finding and a scoped suggestion, not a replacement paragraph. T
 For a tool-dependent skill, record the input state, relevant tool call, resulting state, and the observable check. Verify the example through execution when feasible. A fabricated successful tool log is not an example to preserve.
 
 Examples are teaching data. Hold out different task instances for final evaluation and avoid turning tested answers into general instructions. Preserve enough information to reproduce a failure without loading every historical trace at runtime.
+
+## Example: scoped exceptions and timing direction
+
+Suppose a build source permits a necessary measured-height transition, an audit source permits only transform/opacity animation, and a timing source requires a deliberate phase to last longer than the response. The combined procedure retains three conditions:
+
+- Build can use its documented height exception when its prerequisite holds.
+- Audit recommends transform/opacity feedback or an immediate layout change; the build exception does not waive its rule.
+- Where the deliberate/response rule applies, compare both durations and retain the required direction. Merely making them different, or keeping both below a ceiling, is insufficient.
+
+Check one build request and one audit request independently. A combined example should identify its mode before choosing a property; a timing example must satisfy the source's relationship as well as its numeric ranges.
+
+## Example: verification follows the changed state
+
+Suppose a source requires fresh evidence before a verified-completion claim. A user reports an earlier green run, then authorizes a new fix. The merged procedure obtains evidence for the new state before making that claim. If the user explicitly prohibits tests, it respects that boundary and reports the changed state as unverified. These are distinct branches, not permission to ignore the user's instruction or to present an unrun check as passed.

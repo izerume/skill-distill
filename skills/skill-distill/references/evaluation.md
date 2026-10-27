@@ -26,6 +26,8 @@ Use the same executor model, options, tools, maximum attempts, and context condi
 
 Provide executors with the applicable skill and the task, not the answer key or hypothesized failure. Keep output generation separate from grading. Preserve raw outputs, the exact prompts or prompt hashes, skill hashes, run/task IDs, and available usage records. Missing token or latency measurements remain missing.
 
+Before dispatch, reconcile each arm's supplied files with its intended frozen package, including auxiliary resources. Record intentional exclusions. Missing intended source material invalidates that pair as a full-source comparison; keep its outputs without using them to establish a candidate gain.
+
 For tool workflows, run in bounded task workspaces and judge resulting artifacts or state. Tool-free text execution does not establish tool reliability. Testing a forced-loaded skill does not establish discovery recall; evaluate selection separately with a catalog and positive/negative requests when needed.
 
 ## Grading
@@ -37,6 +39,8 @@ Record each check, its result, and a short piece of evidence or rationale. Mark 
 Before editing behavior for a failed check, confirm that its source condition applies. A checker that always requires rounding does not measure a rule limited to monetary or averaged aggregates on a count-only query. Preserve the frozen score, record the mismatch separately, and base a semantic assessment on the source condition. Do not add unrelated operations merely to satisfy such a check.
 
 For subjective evaluation, hide method identity and randomize order where feasible. If the author also grades, disclose that dependency; deterministic results and an independent executor still have value, but do not make the grading independent.
+
+Keep a visible output defect, a score difference and a suspected cause separate. When investigating a small subjective difference, predeclare a bounded comparison and control relevant inputs such as task data and design direction. If the comparison does not support the proposed cause, leave it unresolved. Do not revise the gate after seeing scores, keep generating until one result wins, or treat an inconclusive difference as proof of equivalence.
 
 ## Gates and interpretation
 
