@@ -25,10 +25,10 @@ Skill Distill 帮助你的 agent 找出相关技能，把有用的指令与工�
 
 ## 它能做什么
 
-- **梳理技能库：**按用途分类，找出值得进一步整理的技能组。
-- **保留各自的工作方式：**整合共同指令，同时保留不同模式、前置条件和必要分支。
-- **检查蒸馏结果：**用代表性任务比较源技能和候选技能，说明实际验证了什么。
-- **持续维护：**检查源技能变化，在你要求时更新，并可恢复已保存的版本。
+- **梳理技能库**： 按用途分类，找出值得进一步整理的技能组。
+- **保留各自的工作方式**： 整合共同指令，同时保留不同模式、前置条件和必要分支。
+- **检查蒸馏结果**： 用代表性任务比较源技能和候选技能，说明实际验证了什么。
+- **持续维护**： 检查源技能变化，在你要求时更新，并可恢复已保存的版本。
 
 合并并非唯一选择：agent 也可以建议保留独立技能、压缩单个技能，或提取共享内容。结果取决于源技能、执行环境和实际评测；少量快测只能说明所测试的情况，不能保证所有任务都等价。
 
@@ -59,10 +59,10 @@ $skill-distill 合并这几份写作技能，保留各自的工作方式。
 
 ## 工作流程
 
-1. **选择：**先快速分类，再检查选中的源技能，决定合并、提取共用内容、压缩还是保留。
-2. **构建：**记录源技能的行为，处理重复、差异和冲突，生成包含必要分支与资源的候选技能。
-3. **验证：**用相关任务比较源技能与候选技能，涵盖各自的工作流和组合场景，并说明检查范围与发现的问题。
-4. **维护：**记录来源快照和保存的版本，按要求检查、更新或恢复。
+1. **选择**： 先快速分类，再检查选中的源技能，决定合并、提取共用内容、压缩还是保留。
+2. **构建**： 记录源技能的行为，处理重复、差异和冲突，生成包含必要分支与资源的候选技能。
+3. **验证**： 用相关任务比较源技能与候选技能，涵盖各自的工作流和组合场景，并说明检查范围与发现的问题。
+4. **维护**： 记录来源快照和保存的版本，按要求检查、更新或恢复。
 
 语义判断和技能生成由 agent 完成；随附的 Python 脚本负责指纹、快照、记录和可恢复的版本操作。文件体积与实际运行成本分别衡量。
 
@@ -89,9 +89,9 @@ $skill-distill 把 writing-workbench 恢复到 r000001。
 
 想了解具体方法，可以从这些文档进入：
 
-- **选材：**[分类](skills/skill-distill/references/classification.md) · [目标选择](skills/skill-distill/references/target-selection.md)
-- **蒸馏与验证：**[行为契约](skills/skill-distill/references/contracts.md) · [评测方法](skills/skill-distill/references/evaluation.md)
-- **后续维护：**[更新与恢复](skills/skill-distill/references/versioning.md)
+- **选材**： [分类](skills/skill-distill/references/classification.md) · [目标选择](skills/skill-distill/references/target-selection.md)
+- **蒸馏与验证**： [行为契约](skills/skill-distill/references/contracts.md) · [评测方法](skills/skill-distill/references/evaluation.md)
+- **后续维护**： [更新与恢复](skills/skill-distill/references/versioning.md)
 
 ## 参考文献与致谢
 
