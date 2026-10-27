@@ -13,44 +13,39 @@
 
 # Skill Distill
 
-Help your agent organize its skill library, combine related skills, and check the result on real tasks.
+**Turn a growing collection of agent skills into a more coherent toolkit.**
 
-New skills appear in your feeds every day. You install one after another—but how many have you forgotten about right after installing them? And how often have you handed your agent a dozen skills at once?
+Skill Distill helps your agent find related skills, bring their useful instructions and workflows together, and check the result against real tasks. It also helps you maintain the distilled skill as its sources change.
 
-Skill Distill is working to solve these problems. It can reduce the number and size of redundant skills without losing their capabilities—and can even improve results in some scenarios.
+When several skills cover the same territory, choosing which ones to use—and how to combine them—can become a task of its own. Skill Distill gives your agent a structured way to work through that problem, from a quick library overview to a tested, maintainable skill package.
 
-**[Read SKILL.md](skills/skill-distill/SKILL.md)**
+**[Explore the skill](skills/skill-distill/SKILL.md)** · [How it works](#how-it-works) · [Get started](#get-started)
 
-## Installation
+## What you can do
 
-Run this in your project directory:
+- **Map your library.** Group skills by purpose and identify promising candidates for consolidation.
+- **Distill with the workflows intact.** Bring shared instructions together while keeping distinct modes, prerequisites, and useful branches.
+- **Check the result.** Compare the sources and the candidate on representative tasks, and report what was actually tested.
+- **Keep it current.** Check for source changes, update when requested, and restore saved versions.
+
+A merge is not always the right answer: the agent can also recommend keeping skills separate, compressing one skill, or factoring out shared material. Results depend on the sources, executor, and evaluation performed; a quick smoke check is evidence about its tested cases, not a guarantee of equivalence.
+
+## Get started
+
+Install in your project directory:
 
 ```bash
 npx skills add izerume/skill-distill --skill skill-distill
 ```
 
-Then invoke `skill-distill` in your agent. For example:
+Then ask your agent for a quick overview:
 
 ```text
 $skill-distill Look over my skill library. Group skills by name and description,
 then suggest groups worth distilling. Keep this to a quick first pass.
 ```
 
-Continue managing source skills with [npx skills](https://github.com/vercel-labs/skills). Save distilled skills to the directory you choose in your project.
-
-## What does it help with?
-
-### Too many skills, and no clear place to start
-
-Some skills repeat the same rules. Others handle different stages of a task. Grouping them by purpose reveals which can share methods or a common entry point.
-
-Skill Distill starts with names and descriptions, suggests groups, then inspects the sources for the groups you select.
-
-### Merged instructions lose the original workflow
-
-Related workflows can share principles while keeping their own interaction patterns. Collecting fragments, shaping an article, and choosing writing beats are a useful example.
-
-Skill Distill records source capabilities, consolidates shared material, preserves the necessary branches, and checks the result on a small set of real tasks. You can name the skills to merge:
+Already know what you want to combine? Try:
 
 ```text
 $skill-distill Merge these writing skills while preserving their workflows.
@@ -58,13 +53,26 @@ Save the result to distilled/writing-workbench in this project.
 Run a quick comparison of the originals and the merged skill, then stop if no issues appear.
 ```
 
-### Keeping distilled skills up to date
+Continue managing source skills with [npx skills](https://github.com/vercel-labs/skills). Save distilled skills to the directory you choose in your project.
 
-Your agent can check for source changes and identify affected outputs. An explicit update request starts a rebuild from the selected sources, followed by smoke checks and a switch to the new version. Saved packages remain available for restoration.
+## How it works
+
+1. **Select:** start with a lightweight classification, then inspect the selected sources and decide whether to merge, factor, compress, or keep them.
+2. **Build:** record source behavior and reconcile overlaps, differences, and conflicts into a candidate skill with the necessary branches and resources.
+3. **Evaluate:** compare source and candidate behavior on relevant tasks, including individual workflows and combined cases. Report the scope and any observed regressions.
+4. **Maintain:** track source snapshots and saved versions, then check, update, or restore as requested.
+
+The agent makes semantic decisions and generates the skill; bundled Python helpers handle fingerprints, snapshots, records, and recoverable version operations. Package size and measured runtime cost are reported separately.
+
+## Maintain a distilled skill
+
+Check for changes without updating:
 
 ```text
 $skill-distill Check whether writing-workbench's sources have changed. Do not update it yet.
 ```
+
+Update or restore when you choose:
 
 ```text
 $skill-distill Update writing-workbench from the currently installed sources.
