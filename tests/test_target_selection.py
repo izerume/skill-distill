@@ -71,22 +71,21 @@ class TargetSelectionTests(unittest.TestCase):
         (a / "SKILL.md").write_text(
             "---\nname: animate\ndescription: >-\n  Build motion\n  on the web.\n---\nBODY MUST NOT BE READ", encoding="utf-8")
         original_iterdir, original_open = Path.iterdir, Path.open
+        header_bytes = (a / "SKILL.md").read_bytes().index(b"BODY MUST NOT BE READ")
         def iterdir(path):
             self.assertFalse(a in path.parents, "classification descended into package resources")
             return original_iterdir(path)
         @contextmanager
         def open_metadata(path, *args, **kwargs):
             with original_open(path, *args, **kwargs) as stream:
-                def lines():
-                    for line in stream:
-                        self.assertNotIn("BODY MUST NOT BE READ", line)
-                        yield line
-                header = lines()
+                test = self
                 class Reader:
-                    def readline(self):
-                        return next(header, "")
-                    def __iter__(self):
-                        return header
+                    def read(self, size):
+                        test.assertLessEqual(stream.tell() + size, header_bytes,
+                                             "classification read workflow body")
+                        return stream.read(size)
+                    def peek(self, size):
+                        return stream.peek(size)
                 yield Reader()
         with patch.object(Path, "read_bytes", side_effect=AssertionError("resource content read")), \
              patch.object(Path, "iterdir", iterdir), patch.object(Path, "open", open_metadata):

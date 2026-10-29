@@ -182,19 +182,35 @@ def _skill_id(path):
 def _metadata(path):
     # Stop at the frontmatter boundary; neither the body nor resources are read.
     lines = []
-    with (path / "SKILL.md").open(encoding="utf-8-sig") as stream:
-        first = stream.readline()
+    # Text buffering can decode body bytes even when only the header is wanted.
+    with (path / "SKILL.md").open("rb") as stream:
+        def header_line():
+            line = bytearray()
+            while True:
+                char = stream.read(1)
+                if not char:
+                    break
+                line.extend(char)
+                if char in (b"\r", b"\n"):
+                    if char == b"\r" and stream.peek(1)[:1] == b"\n":
+                        line.extend(stream.read(1))
+                    break
+            return bytes(line)
+        first = header_line().decode("utf-8-sig")
         if first.strip() == "---":
             lines.append(first)
-            for line in stream:
+            while True:
+                raw = header_line()
+                if not raw:
+                    raise ValueError(f"unclosed SKILL.md frontmatter: {path}")
+                line = raw.decode("utf-8")
                 lines.append(line)
                 if line.strip() == "---":
                     break
-            else:
-                raise ValueError(f"unclosed SKILL.md frontmatter: {path}")
-    front = "".join(lines)
+    front = "".join(lines).replace("\r\n", "\n").replace("\r", "\n")
     description, _ = _description_and_body(front)
-    names = _declarations("".join(lines[1:-1]), "name")
+    header = "".join(lines[1:-1]).replace("\r\n", "\n").replace("\r", "\n")
+    names = _declarations(header, "name")
     name = names[0].strip("\"'") if names else path.name
     digest = hashlib.sha256(json.dumps([name, description], ensure_ascii=False).encode()).hexdigest()
     return {"id": _skill_id(path), "path": str(path), "name": name,

@@ -1,5 +1,7 @@
 # Classify before detailed selection
 
+For a broad library request, first complete [source selection](source-selection.md): discover common locations and get the user's source, official/system and plugin choices. Inventory only the resulting exact package paths. Existing explicit source choices carry forward.
+
 Start a library-wide request with the tasks users want done. Read only names and descriptions for this first pass. Group related capabilities broadly enough to reveal potential shared cores, workflow stages and platform branches. Choose categories that fit this library; a previous library's category names or final entrypoint count are not constraints.
 
 Give each skill one primary task category. Add related categories for cross-domain capabilities and free-form tags for platform, output or stage. Roles describe how the skill helps:
