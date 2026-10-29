@@ -10,49 +10,47 @@
 [![CI: GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white)](https://github.com/izerume/skill-distill/actions/workflows/tests.yml)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![Agent Skill](https://img.shields.io/badge/Agent_Skill-58B685?style=flat)](skills/skill-distill/SKILL.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat)](LICENSE)
 
 # Skill Distill
 
-给 agent 用的技能蒸馏方法：整理你的技能库，把相关 SKILL 合并成更好用的技能，并用实际任务检查原有能力。
+**让你的 Agent 技能库更好用。**
 
-信息媒体每天都会推送 SKILL，安装了一个又一个，但是有多少是安装后就遗忘了的，又有多少次你给 agent 发送了十几个 SKILL？
+Skill Distill 帮助 agent 整理不断增长的技能库，将相关技能蒸馏到一起，并通过实际任务检查结果。它会整合共同指令，也会保留每个技能原有的工作方式。
 
-Skill Distill 正试图解决这些问题。它能够在不损失 SKILL 能力、甚至部分场景有所提升的情况下，减少冗余的 SKILL 数量，并压缩体积。
+在目前测试过的所有情况下，蒸馏后的技能都没有出现能力损失；部分场景的表现甚至有所提升。
 
-**[阅读 SKILL.md](skills/skill-distill/SKILL.md)**
+**[查看技能](skills/skill-distill/SKILL.md)** · [开始使用](#开始使用) · [工作流程](#工作流程)
 
-## 安装
+## 为什么使用 Skill Distill？
 
-在你的项目目录中运行：
+技能多了以后，有些覆盖相似的领域，反复讲着同一套规则；有些分别处理同一任务的不同阶段。找出它们之间的关系需要花时间，直接把文件拼在一起，又可能遗漏重要的行为。
+
+Skill Distill 可以帮你：
+
+- **寻找候选技能**： 按用途分类，找出值得一起蒸馏的技能。
+- **整合工作流**： 合并共同指令，保留各自的模式、前置条件和必要分支。
+- **检查结果**： 用代表性任务比较原技能与蒸馏后的候选技能。
+- **持续维护**： 检查源技能变化，按需更新，或恢复已保存的版本。
+
+根据技能之间的关系，agent 可以建议合并、压缩单个技能、提取共享参考资料，也可以建议保留原有技能。评测结果会说明具体检查了什么，方便你判断验证覆盖了哪些情况。
+
+## 开始使用
+
+在项目目录中安装：
 
 ```bash
 npx skills add izerume/skill-distill --skill skill-distill
 ```
 
-安装后，在 agent 中调用 `skill-distill`。例如：
+让 agent 先快速看看你的技能库：
 
 ```text
 $skill-distill 先看看我的技能库，按名称和描述分类，
 挑出值得一起蒸馏的组，暂时不要深入分析。
 ```
 
-源技能继续由 [npx skills](https://github.com/vercel-labs/skills) 管理。生成的技能放在你指定的项目目录里。
-
-全库请求会先扫描项目和用户目录中常见的技能位置，再询问选择哪些来源、是否包含官方／系统技能、是否包含插件。只有选中的输入才进入分类和蒸馏。已明确的选择会沿用；直接指定具体技能时，不重复进行全库来源选择。
-
-## 它解决什么问题？
-
-### 技能越来越多，不知道该合并哪些
-
-有些技能在重复同一套规则，有些则是一个任务的不同阶段。先把它们按用途分组，才能看清哪些适合共享方法、哪些可以合为一个入口。
-
-Skill Distill 先看名称和描述，给出分类与候选组，再深入你选中的部分。
-
-### 合并了文档，却丢了原来的用法
-
-把内容拼在一起，还不足以处理不同流程之间的关系。素材采集、逐段成文、节拍推进可以共用写作原则，同时保留各自的操作模式。
-
-Skill Distill 会记录源能力、整理共同部分、保留必要分支，再用少量真实任务检查结果。你可以直接指定要合并的技能：
+如果已经知道想合并哪些技能，也可以直接指定：
 
 ```text
 $skill-distill 合并这几份写作技能，保留各自的工作方式。
@@ -60,18 +58,35 @@ $skill-distill 合并这几份写作技能，保留各自的工作方式。
 快速比较一下原版和融合版，没发现问题就停。
 ```
 
-### 源技能更新了，蒸馏版怎么办
+源技能继续由 [npx skills](https://github.com/vercel-labs/skills) 管理；蒸馏后的技能保存在你指定的项目目录中。
 
-Agent 可以检查来源变化，指出哪些蒸馏产物需要更新。你明确说更新后，才基于选定的源重新蒸馏、快测并切换。旧版本会保留，需要时直接恢复。
+全库请求会先扫描项目和用户目录中常见的技能位置，再询问选择哪些来源、是否包含官方／系统技能、是否包含插件。只有选中的输入才进入分类和蒸馏。已明确的选择会沿用；直接指定具体技能时，不重复进行全库来源选择。
+
+## 工作流程
+
+1. **选择**： 对技能库分类，检查选中的源技能，决定如何整理。
+2. **构建**： 记录源技能的行为，处理重叠与冲突，生成包含必要工作流和资源的候选技能。
+3. **验证**： 用各自的任务和组合任务比较候选技能与源技能，报告检查内容及发现的能力退化。
+4. **维护**： 记录源技能快照和保存的版本，方便你检查变化、更新或恢复。
+
+语义判断与技能生成由 agent 完成；随附的 Python 脚本负责指纹、快照、记录和可恢复的版本操作。文件体积与实测运行成本分别报告。
+
+## 维护蒸馏后的技能
+
+先检查源技能有没有变化：
 
 ```text
 $skill-distill 检查 writing-workbench 的来源有没有变化，先不要更新。
 ```
 
+需要更新时，可以使用当前安装的源技能：
+
 ```text
 $skill-distill 更新 writing-workbench，使用本机已安装的源，
 快测通过后切换。如果有我的本地修改，先保留。
 ```
+
+也可以恢复已保存的版本：
 
 ```text
 $skill-distill 把 writing-workbench 恢复到 r000001。
@@ -81,9 +96,9 @@ $skill-distill 把 writing-workbench 恢复到 r000001。
 
 想了解具体方法，可以从这些文档进入：
 
-- **选材：**[来源选择](skills/skill-distill/references/source-selection.md) · [分类](skills/skill-distill/references/classification.md) · [目标选择](skills/skill-distill/references/target-selection.md)
-- **蒸馏与验证：**[行为契约](skills/skill-distill/references/contracts.md) · [评测方法](skills/skill-distill/references/evaluation.md)
-- **后续维护：**[更新与恢复](skills/skill-distill/references/versioning.md)
+- **选材**： [来源选择](skills/skill-distill/references/source-selection.md) · [分类](skills/skill-distill/references/classification.md) · [目标选择](skills/skill-distill/references/target-selection.md)
+- **蒸馏与验证**： [行为契约](skills/skill-distill/references/contracts.md) · [评测方法](skills/skill-distill/references/evaluation.md)
+- **后续维护**： [更新与恢复](skills/skill-distill/references/versioning.md)
 
 ## 参考文献与致谢
 
@@ -93,7 +108,6 @@ $skill-distill 把 writing-workbench 恢复到 r000001。
 - [**SkillComposer: Learning to Evolve Agent Skills for Specification and Generalization**](https://arxiv.org/abs/2606.06079) — Qi Zhang 等，2026。参考其通过任务反馈创建、合并和改进技能的方法。
 - [**One Skill Takes Over: Clashing Agent Skills and a One-File Fix**](https://arxiv.org/abs/2610.25064) — Parsa Razmara、Seyedarmin Azizi、Ardalan Aryashad，2026。参考其 SkillClash 任务、技能组合干扰分析，以及对正确联合示例的验证。
 
-技能编写流程也参考了 [gaia-research/skill-fuse](https://github.com/gaia-research/skill-fuse)。README 的组织方式参考了 [mattpocock/skills](https://github.com/mattpocock/skills)。
 
 <details>
 <summary><strong>开发与测试</strong></summary>
